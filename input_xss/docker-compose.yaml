@@ -1,0 +1,13 @@
+version: "3"
+services:
+  input-xss:
+    build: images/web
+    ports:
+      - "8083:8083"
+    environment:
+      - FLASK_RUN_PORT=8083
+    deploy:
+      resources:
+        reservations:
+          cpus: '2'
+          memory: 60M

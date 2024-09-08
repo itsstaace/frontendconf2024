@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поисковик</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div style="text-align: center;">
+            <h1>Поисковик</h1>
+        </div>
+        <form action="" method="post">
+            <div class="form-group">
+                {% if not search: %}
+                    <input type="text" id="search" name="search" required placeholder="Введите строку для поиска" autocomplete="off">
+                {% endif %}
+                {% if search: %}
+                    <input type="text" id="search" name="search" value="{{ search }}" required placeholder="Введите строку для поиска">
+                {% endif %}
+            </div>
+            <button type="submit">Поиск</button>
+        </form>
+        {% if search: %}
+        <div class="info">
+            <p>Результаты поиска для <span>{{ search|e }}</span>:</p>
+            <p>Найдено {{r}} результатов</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
