@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-meta-dynamic="true">Банк</title>
+    <meta property="og:title" content="Банк" data-meta-dynamic="true">
+    <meta property="og:description" content="Банк" data-meta-dynamic="true">
+    <meta property="og:site_name" content="Банк" data-meta-dynamic="true">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+<div class="app-class">
+    <div class="header mb-20">
+        <a href="/" class="logo" style="font-weight: 600;">
+            Банк</a>
+        <a href="/api/user" class="button blue-button">Личный кабинет</a>
+    </div>
+
+
+    <div class="card w-50 self-center flex-col ">
+        <h2 class="center">
+            <p>Вы успешно зарегистрированы!</p>
+        </h2>
+        <a href="/api/user" class="button button-primary" style="margin: 0 auto;">Продолжить</a>
+    </div>
+
+
+    <footer class="footer">
+        <p>© itsstaace. Все права защищены.</p>
+    </footer>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dom-xss-innerhtml:
+    build: images/web
+    ports:
+      - "8085:8085"
+    environment:
+      - FLASK_RUN_PORT=8085
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.2'
+          memory: 40M
