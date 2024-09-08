@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dom-xss-redirect:
+    build: images/web
+    ports:
+      - "8084:8084"
+    environment:
+      - FLASK_RUN_PORT=8084
+    deploy:
+      resources:
+        reservations:
+          cpus: '2'
+          memory: 60M
