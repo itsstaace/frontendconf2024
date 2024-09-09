@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dom-xss-jquery:
+    build: images/web
+    ports:
+      - "8086:8086"
+    environment:
+      - FLASK_RUN_PORT=8086
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.2'
+          memory: 40M
