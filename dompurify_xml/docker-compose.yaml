@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dompurify-cdata:
+    build: images/web
+    ports:
+      - "8093:8093"
+    environment:
+      - FLASK_RUN_PORT=8093
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.2'
+          memory: 40M

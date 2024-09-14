@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-meta-dynamic="true">Банк</title>
+    <meta property="og:title" content="Банк" data-meta-dynamic="true">
+    <meta property="og:description" content="Банк" data-meta-dynamic="true">
+    <meta property="og:site_name" content="Банк" data-meta-dynamic="true">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
+
+</head>
+
+<body>
+    <div class="app-class">
+        <div class="header mb-20">
+            <a href="/" class="logo" style="font-weight: 600;">
+                Банк</a>
+            <a href="/api/user" class="button blue-button">Личный кабинет</a>
+        </div>
+
+
+        <div class="card w-80 self-center">
+            <h2 class="center">Мой профиль</h2>
+            <div class="title6 title7 title8" style="text-align: center" id="profile">
+                <script>
+                    document.addEventListener('DOMContentLoaded', async function () {
+                        var userId = {{user_id | tojson}};
+                        let response = await fetch('/api/name', {
+                            method: 'POST',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "user_id": userId
+                            }),
+                        });
+                        const body = await response.json();
+                        if (response.ok){
+                            if (body.error !== undefined) {
+                                document.getElementById('profile').innerHTML = DOMPurify.sanitize('<p>' + body.error + '</p>')
+                                return
+                            }
+                            document.getElementById('profile').innerHTML = DOMPurify.sanitize(`<div class="flex-row justify-between" style="width: 80%; margin: 0 auto;">
+                                <span>${body.name}</span>
+                                </div>`, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'})
+                        } else {
+                            document.getElementById('profile').innerHTML = '<p>Ошибка загрузки данных</p>'
+                        }
+                    });
+                </script>
+            </div>
+            <h2 class="center">Платежи</h2>
+            <div id="paymentsInfo" class="title6 title7 title8" style="text-align: center">
+                <div class="flex-row justify-between" style="width: 50%; margin: 0 auto;">
+                    <span>Нет информации о платежах</span>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <p>© itsstaace. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
